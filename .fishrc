@@ -1,0 +1,1 @@
+alias cek-ip="ip -4 -br -c a s"
