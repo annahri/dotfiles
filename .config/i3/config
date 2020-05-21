@@ -1,6 +1,8 @@
 # i3 config file (v4)
 
+#============================================#
 # Variable setting
+#============================================#
 set $mod Mod4
 set $up i
 set $down k
@@ -8,9 +10,26 @@ set $left j
 set $right l
 set $TERMINAL st
 
+#============================================#
+# i3wm Settings
+#============================================#
 font pango:BitstreamVeraSansMono Nerd Font Roman 10
+floating_modifier $mod
+workspace_auto_back_and_forth yes
+focus_on_window_activation focus
+focus_follows_mouse no
 
-## Autolaunch
+## Border & Gaps settings
+for_window [class=".*"] border pixel 1
+hide_edge_borders smart_no_gaps
+smart_gaps on
+smart_borders on
+gaps inner 20
+gaps outer -4
+
+#============================================#
+# Autolaunch
+#============================================#
 exec --no-startup-id nm-applet
 exec --no-startup-id compton --config ~/.config/compton/config
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
@@ -19,17 +38,23 @@ exec "setxkbmap -option 'grp:alt_shift_toggle'"
 exec_always dunst -conf /home/annahri/.config/dunst/dunstrc
 exec_always feh --bg-scale --randomize /home/annahri/Pictures/Wallpapers/sunset_over_mountains_of_himalayas-2560x1440.jpg /home/annahri/Pictures/Wallpapers/desert_sand_dunes_4k-2560x1440.jpg
 
-## Send specific apps to workspace
+#============================================#
+# Send specific apps to workspace
+#============================================#
 assign [class="Brave-browser"] 2
 assign [class="mailspring"] 4
 assign [class="discord"] 5
 
+#============================================#
 ## Lock screen
+#============================================#
 # bindsym $mod+Shift+s exec gnome-screensaver-command -l # Easier locking
 # bindsym $mod+Shift+s exec i3lock-fancy -p
 bindsym $mod+Shift+s exec /home/annahri/.local/bin/betterlockscreen --lock dim
 
+#============================================#
 ## Custom Keybindings
+#============================================#
 bindsym $mod+n exec nautilus
 bindsym $mod+b exec brave-browser
 bindsym $mod+Return exec st
@@ -38,18 +63,25 @@ bindsym $mod+Shift+Return exec terminator
 bindsym Print exec gnome-screenshot --interactive
 bindsym Shift+Print exec flameshot gui
 
+#============================================#
 ## Backlight
+#============================================#
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 #bindsym XF86MonBrightnessUp exec ligaht -A 10 # Increase Brightness
 #bindsym XF86MonBrightnessDown exec light -U 10 # Decrease Brightness
 
+#============================================#
 ## Audio Player
+#============================================#
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
 
+#============================================#
+# Volume Control
+#============================================#
 ## Raise Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 ## Lower Volume
@@ -57,7 +89,6 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute # Toggle muting
 
 ## Drag floating containers
-floating_modifier $mod
 
 ## Terminal
 #bindsym $mod+Return exec /home/annahri/.local/kitty.app/bin/kitty --session /home/annahri/.config/kitty/session.conf
@@ -74,55 +105,50 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 ## Rofi window switcher
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 
+#============================================#
+# Focus Control
+#============================================#
 ## Change focus
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
-
 # Using direction key
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
 ## Move Focused window
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
-
 # Using direction keys
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 
+#============================================#
+# Container Control
+#============================================#
 ## Horizontal Split
 bindsym $mod+h split h
-
 ## Vertical Split
 bindsym $mod+v split v
-
 ## Fullscreen mode toggle
 bindsym $mod+f fullscreen toggle
-
 ## Change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
 ## Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
 ## Change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
 ## Focus the parent container
 bindsym $mod+a focus parent
-focus_follows_mouse no
 
 ## Focus on window  activation
-focus_on_window_activation focus
 
 ## Focus the child container
 #bindsym $mod+d focus child
@@ -174,7 +200,6 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+z move workspace to output left
 bindsym $mod+x move workspace to output right
 
-workspace_auto_back_and_forth yes
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -234,8 +259,6 @@ client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
 
-
-
 ## Floating Enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -245,19 +268,6 @@ for_window [title="System Monitor"] floating enable
 for_window [title="Network Connections"] floating enable
 for_window [class="gnome-screenshot"] floating enable
 for_window [class="flameshot"] floating enable
-
-## Border & Gaps settings
-for_window [class=".*"] border pixel 1
-hide_edge_borders smart_no_gaps
-smart_gaps on
-smart_borders on
-gaps inner 20
-gaps outer -4
-
-## Exec
-
-
-## On the fly gaps change
 
 set $mode_gaps Gaps: (o)uter, (i)nner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
