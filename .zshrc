@@ -9,6 +9,14 @@ source ~/.config/functions
 # ENV
 export EDITOR="nvim"
 
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
 # PATHS
 export PATH=$PATH:$HOME/Applications/bin
 export PATH=$PATH:$HOME/.local/bin
@@ -31,13 +39,12 @@ ZSH_THEME="gianu"
 
 # Oh My ZSH plugins
 plugins=(
-  command-not-found
-	history
-  fzf
-	fedora
-  git
-  sudo
-  zsh-syntax-highlighting
-	yum
+command-not-found
+history
+fzf
+git
+sudo
+zsh-syntax-highlighting
+dnf
 )
 source $ZSH/oh-my-zsh.sh

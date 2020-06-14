@@ -1,10 +1,50 @@
-set tabstop=2
+syntax on
+
+set tabstop=4 softtabstop=4
 set expandtab
 set shiftwidth=4
-set number
+set number relativenumber
+set nowrap
+set nocompatible
+set incsearch
+set hidden
+set termguicolors
+set smarttab
+set noshowmatch
+set nohlsearch
 set wildmode=longest,list,full
 set wildmenu
-set t_ut=
+set laststatus=2
+set noshowmode
+
+if !has('gui_running')
+  set t_Co=256
+endif
+
+filetype plugin on
+
+call plug#begin('~/.vim/plugged')
+Plug 'arcticicestudio/nord-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'yggdroot/indentline'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-surround'
+Plug 'mhinz/vim-startify'
+Plug 'dense-analysis/ale'
+Plug 'jiangmiao/auto-pairs'
+call plug#end()
+
+let g:lightline = {
+            \ 'colorscheme': 'nord',
+            \ }
+
+colorscheme nord
+set background=dark
+set encoding=UTF-8
 
 "let &t_SI = "\e[6 q"
 "let &t_EI = "\e[2 q"
@@ -22,9 +62,6 @@ endif
 if &term =~ '256color'
     set t_ut=
 endif
-
-" TextEdit might fail if hidden is not set.
-set hidden
 
 " Some servers have issues with backup files, see #649.
 set nobackup
@@ -172,82 +209,9 @@ inoremap <F3> <C-o>:set expandtab!<CR>
 
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
-filetype plugin on
-
-call plug#begin('~/.vim/plugged')
-Plug 'bronson/vim-trailing-whitespace'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'wincent/terminus'
-Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'mhartington/oceanic-next'
-Plug 'rakr/vim-one'
-Plug 'yggdroot/indentline'
-Plug 'powerline/powerline'
-Plug 'godlygeek/tabular'
-Plug 'tpope/vim-surround'
-Plug 'mhinz/vim-startify'
-Plug 'dense-analysis/ale'
-Plug 'jacoborus/tender.vim'
-Plug 'jiangmiao/auto-pairs'
-call plug#end()
 
 " Or if you have Neovim >= 0.1.5
 if (has("termguicolors"))
     set termguicolors
-endif
-
-" Theme
-syntax on
-"  let g:oceanic_next_terminal_bold = 1
-"  let g:oceanic_next_terminal_italic = 1
-" colorscheme OceanicNext
-let g:one_allow_italics = 1
-colorscheme one
-set background=dark " for the dark version
-"set background=light " for the light version
-
-" vim-airline
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
-
-" vim-airline
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-if !exists('g:airline_powerline_fonts')
-    let g:airline#extensions#tabline#left_sep = ' '
-    let g:airline#extensions#tabline#left_alt_sep = '|'
-    let g:airline_left_sep          = '▶'
-    let g:airline_left_alt_sep      = '»'
-    let g:airline_right_sep         = '◀'
-    let g:airline_right_alt_sep     = '«'
-    let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-    let g:airline#extensions#readonly#symbol   = '⊘'
-    let g:airline#extensions#linecolumn#prefix = '¶'
-    let g:airline#extensions#paste#symbol      = 'ρ'
-    let g:airline_symbols.linenr    = '␊'
-    let g:airline_symbols.branch    = '⎇'
-    let g:airline_symbols.paste     = 'ρ'
-    let g:airline_symbols.paste     = 'Þ'
-    let g:airline_symbols.paste     = '∥'
-    let g:airline_symbols.whitespace = 'Ξ'
-else
-    let g:airline#extensions#tabline#left_sep = ''
-    let g:airline#extensions#tabline#left_alt_sep = ''
-
-    " powerline symbols
-    let g:airline_left_sep = ''
-    let g:airline_left_alt_sep = ''
-    let g:airline_right_sep = ''
-    let g:airline_right_alt_sep = ''
-    let g:airline_symbols.branch = ''
-    let g:airline_symbols.readonly = ''
-    let g:airline_symbols.linenr = ''
 endif
 
