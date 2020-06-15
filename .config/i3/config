@@ -22,10 +22,10 @@ workspace_auto_back_and_forth yes
 ## Border & Gaps settings
 for_window [class=".*"] border pixel 1
 hide_edge_borders smart_no_gaps
-smart_gaps on
+# smart_gaps on
 smart_borders on
-gaps inner 15
-gaps outer -4
+gaps inner 25
+gaps outer 0
 
 #============================================#
 # Autolaunch
@@ -33,6 +33,7 @@ gaps outer -4
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -b
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+# exec --no-startup-id /home/annahri/.scripts/i3-alternating-layout/alternating_layouts.py
 exec "setxkbmap -layout us,fr,ar"
 exec "setxkbmap -option 'grp:alt_shift_toggle'"
 

@@ -3,11 +3,11 @@
 
 # SOURCE
 source ~/.fonts/*.sh
-source ~/.config/aliases
 source ~/.config/functions
 
 # ENV
 export EDITOR="nvim"
+export SUDO_EDITOR="nvim"
 
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
@@ -35,7 +35,7 @@ export ZSH="/home/annahri/.oh-my-zsh"
 export FZF_BASE="/usr/share/fzf"
 
 # Theme
-ZSH_THEME="gianu"
+ZSH_THEME="minimal"
 
 # Oh My ZSH plugins
 plugins=(
@@ -48,3 +48,10 @@ zsh-syntax-highlighting
 dnf
 )
 source $ZSH/oh-my-zsh.sh
+source ~/.config/aliases
+
+test -r "~/.dir_colors" && eval $(dircolors ~/.dircolors)
+ls > /dev/null
+
+# MOTD
+hijri.sh | figlet -f slant -t -c
