@@ -90,16 +90,17 @@ group net {
     }
 
     netdata curr {
-        format = "Downrate: [\?color=down {down} Kb]"
+        format = "[\?color=down Downrate: {down} Kb]"
     }
 
     netdata tot {
-        format = "Total: [\?color=total {download} Mb]"
+        format = "[\?color=total Total: {download} Mb]"
     }
 
 }
 
 window {
+    max_width = 64
     format = '{title}'
 }
 

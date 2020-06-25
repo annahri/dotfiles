@@ -33,6 +33,7 @@ gaps outer 0
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -b
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+exec --no-startup-id redshift
 # exec --no-startup-id /home/annahri/.scripts/i3-alternating-layout/alternating_layouts.py
 exec "setxkbmap -layout us,fr,ar"
 exec "setxkbmap -option 'grp:alt_shift_toggle'"
@@ -44,7 +45,7 @@ exec_always nitrogen --restore
 #============================================#
 # Send specific apps to workspace
 #============================================#
-assign [title="SSH SESSION"] 1
+assign [class="SSH SESSION"] 1
 assign [class="Brave-browser"] 2
 assign [class="mailspring"] 4
 assign [class="discord"] 5
@@ -115,11 +116,12 @@ bindsym XF86AudioNext exec playerctl next
 #============================================#
 # Volume Control
 #============================================#
-## Raise Volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && killall -USR1 py3status # && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-## Lower Volume
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && killall -USR1 py3status# && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute # Toggle muting
+# bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && killall -USR1 py3status # && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+# bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && killall -USR1 py3status# && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+# bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute # Toggle muting
+bindsym XF86AudioRaiseVolume exec --no-startup-id py3-cmd click --button 4 volume_status
+bindsym XF86AudioLowerVolume exec --no-startup-id py3-cmd click --button 5 volume_status
+bindsym XF86AudioMute exec --no-startup-id py3-cmd click --button 1 volume_status
 
 ## Kill focused window
 bindsym $mod+Shift+q kill
