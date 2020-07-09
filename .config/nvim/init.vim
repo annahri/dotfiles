@@ -61,7 +61,7 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
             \ 'syntax': 'markdown', 'ext': '.md'}]
 
 let g:startify_custom_header =
-            \ startify#pad(split(system('/home/annahri/.local/bin/hijri.sh | figlet -c'), '\n'))
+            \ startify#pad(split(system('/home/annahri/.local/bin/hijri.sh | figlet -c | lolcat'), '\n'))
 
 " Theme
 colorscheme nord

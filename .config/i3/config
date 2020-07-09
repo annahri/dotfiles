@@ -16,7 +16,7 @@ set $TERMINAL st
 font pango:JetBrains Mono Regular 9
 floating_modifier $mod
 focus_on_window_activation focus
-focus_follows_mouse no
+focus_follows_mouse yes
 workspace_auto_back_and_forth yes
 
 ## Border & Gaps settings
@@ -45,10 +45,10 @@ exec_always nitrogen --restore
 #============================================#
 # Send specific apps to workspace
 #============================================#
-assign [class="SSH SESSION"] 1
-assign [class="Brave-browser"] 2
-assign [class="mailspring"] 4
-assign [class="discord"] 5
+assign [class="SSH SESSION"] $ws1
+assign [class="Brave-browser"] $ws2
+assign [class="mailspring"] $ws4
+assign [class="discord"] $ws5
 
 #============================================#
 # Floating applications
@@ -97,6 +97,12 @@ bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym $mod+o exec --no-startup-id /home/annahri/.scripts/rofi/rofi-kitab.sh
 bindsym $mod+m exec --no-startup-id /home/annahri/.scripts/rofi/rofi-rii.sh
 bindsym $mod+Shift+m exec --no-startup-id /home/annahri/.scripts/rofi/rofi-kajiankitab.sh
+#============================================#
+## Status bar control
+#============================================#
+bindsym $mod+Shift+period exec --no-startup-id py3-cmd click --button 1 "group sysinfo"
+bindsym $mod+Shift+comma exec --no-startup-id py3-cmd click --button 3 "group sysinfo"
+
 #============================================#
 ## Backlight
 #============================================#
@@ -186,16 +192,16 @@ bindsym $mod+minus scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "1 SSH"
+set $ws2 "2 SURF"
+set $ws3 "3 TERM"
+set $ws4 "4 MAIL"
+set $ws5 "5 CHAT"
+set $ws6 "6 WS"
+set $ws7 "7 WS"
+set $ws8 "8 WS"
+set $ws9 "9 WS"
+set $ws10 "10 WS"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -210,20 +216,22 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 
 # move container
-bindsym $mod+z move workspace to output left
-bindsym $mod+x move workspace to output right
+bindsym $mod+z move container to output left
+bindsym $mod+x move container to output right
+bindsym $mod+Shift+z move workspace to output left
+bindsym $mod+Shift+x move workspace to output right
 
 
 # reload the configuration file
@@ -264,25 +272,26 @@ bar {
   height 18
 
   colors {
-    background #282A36
-    statusline #F8F8F2
-    separator  #44475A
+    background #2E3440
+    statusline #ECEFF4
+    separator  #4C566A
 
-    focused_workspace  #44475A #44475A #F8F8F2
-    active_workspace   #282A36 #44475A #F8F8F2
-    inactive_workspace #282A36 #282A36 #BFBFBF
-    urgent_workspace   #FF5555 #FF5555 #F8F8F2
-    binding_mode       #FF5555 #FF5555 #F8F8F2
+    focused_workspace  #5E81AC #5E81AC #ECEFF4
+    active_workspace   #434C5E #434C5E #ECEFF4
+    inactive_workspace #3B4252 #3B4252 #D8DEE9
+    urgent_workspace   #BF616A #BF616A #ECEFF4
+    binding_mode       #BF616A #BF616A #ECEFF4
   }
 }
 
 # Window color
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-client.background       #F8F8F2
+# class                 border  backgr. text    indicator child_border
+client.focused          #5E81AC #5E81AC #ECEFF4 #5E81AC   #5E81AC
+client.focused_inactive #44475A #44475A #ECEFF4 #44475A   #44475A
+client.unfocused        #3B4252 #3B4252 #D8DEE9 #3B4252   #3B4252
+client.urgent           #44475A #BF616A #ECEFF4 #BF616A   #BF616A
+client.placeholder      #3B4252 #3B4252 #ECEFF4 #3B4252   #3B4252
+client.background       #4C566A
 
 
 set $mode_gaps Gaps: (o)uter, (i)nner

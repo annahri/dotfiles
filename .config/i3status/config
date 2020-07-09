@@ -9,7 +9,7 @@
 general {
     output_format = "i3bar"
     colors = true
-    color = "#ECEFF4"
+    color = "#E5E9F0"
     color_good = "#A3BE8C"
     color_degraded = "#EBCB8B"
     color_bad = "#BF616A"
