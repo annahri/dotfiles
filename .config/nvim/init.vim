@@ -19,11 +19,13 @@ set noshowmode
 
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
+let g:go_def_mapping_enabled = 0
 
 filetype plugin on
 call plug#begin('~/.vim/plugged')
 "===== Language server =====""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "===== Functionality =====""
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'godlygeek/tabular'
