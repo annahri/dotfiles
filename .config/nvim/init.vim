@@ -38,21 +38,21 @@ Plug 'tpope/vim-commentary'
 Plug 'vimwiki/vimwiki'
 Plug 'yggdroot/indentline'
 Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 "===== Themes / Visuals =====""
 Plug 'arcticicestudio/nord-vim'
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'frazrepo/vim-rainbow'
 Plug 'itchyny/lightline.vim'
 Plug 'jacoborus/tender.vim'
-Plug 'mhartington/oceanic-next'
+" Plug 'mhartington/oceanic-next'
 Plug 'mhinz/vim-startify'
-Plug 'powerline/powerline'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'rakr/vim-one'
+" Plug 'powerline/powerline'
+" Plug 'PotatoesMaster/i3-vim-syntax'
+" Plug 'rakr/vim-one'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+" Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 call plug#end()
 
 let g:lightline = {
