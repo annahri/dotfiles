@@ -12,30 +12,30 @@ set $term1      alacritty
 set $term2      st
 set $term3      termite
 set $term4      terminator
-set $muttterm   urxvt
+set $muttterm   st
 set $fileman    pcmanfm
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1    "1 SSH"
-set $ws2    "2 SURF"
-set $ws3    "3 TERM"
-set $ws4    "4 MAIL"
-set $ws5    "5 CHAT"
-set $ws6    "6 WS"
-set $ws7    "7 WS"
-set $ws8    "8 WS"
-set $ws9    "9 WS"
-set $ws10   "10 WS"
+set $ws1    "1 ssh"
+set $ws2    "2 www"
+set $ws3    "3 term"
+set $ws4    "4 mail"
+set $ws5    "5 chat"
+set $ws6    "6 ws"
+set $ws7    "7 ws"
+set $ws8    "8 ws"
+set $ws9    "9 ws"
+set $ws10   "0 ws"
 
 #============================================#
 # i3wm Settings
 #============================================#
-font                            pango:Gravity 9
+font                            pango:Gravity 10
 floating_modifier               $mod
 focus_on_window_activation      focus
 focus_follows_mouse             no
-workspace_auto_back_and_forth   yes
+workspace_auto_back_and_forth   no
 
 ## Border & Gaps settings
 for_window [class=".*"] border pixel 5
@@ -97,7 +97,7 @@ for_window [class="Pavucontrol"]            floating enable
 #============================================#
 # bindsym $mod+Shift+s exec gnome-screensaver-command -l # Easier locking
 # bindsym $mod+Shift+s exec i3lock-fancy -p
-bindsym $mod+Shift+s exec /home/annahri/.local/bin/betterlockscreen --lock dim
+bindsym $mod+Shift+s exec betterlockscreen --lock dim
 
 #============================================#
 ## Custom Keybindings
@@ -281,7 +281,7 @@ bar {
   i3bar_command i3bar --transparency
   status_command py3status
   # status_command /usr/bin/i3status-rs /home/annahri/.config/i3/status.toml
-  font pango:Gravity 9
+  font pango:Gravity 10
   position top
   height 18
 
